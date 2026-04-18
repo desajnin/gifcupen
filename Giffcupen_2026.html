@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giffcupen 25–26 april 2026 — Skoftebyns IF P2014</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      color: #1a202c;
+      padding: 16px;
+    }
+
+    .container { max-width: 680px; margin: 0 auto; }
+
+    /* Header */
+    .hero {
+      background: linear-gradient(135deg, #1a3a1a 0%, #2d6a2d 100%);
+      color: white;
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .hero .badge {
+      background: rgba(255,255,255,0.15);
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    .hero h1 { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+    .hero p { font-size: 15px; opacity: 0.85; }
+
+    /* Cards */
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+    .card h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #1a202c;
+    }
+
+    /* Info rows */
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-label {
+      font-size: 13px;
+      color: #718096;
+      min-width: 80px;
+      padding-top: 1px;
+    }
+    .info-value { font-size: 14px; font-weight: 500; flex: 1; }
+    .info-value a {
+      color: #2d6a2d;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .info-value a:hover { text-decoration: underline; }
+
+    /* Meals */
+    .meal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .meal-item {
+      background: #f7faf7;
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+    }
+    .meal-item .day { font-size: 11px; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .meal-item .meal-name { font-size: 13px; font-weight: 600; color: #2d6a2d; margin-bottom: 2px; }
+    .meal-item .meal-time { font-size: 20px; font-weight: 700; }
+    .meal-item .meal-food { font-size: 12px; color: #4a5568; margin-top: 4px; }
+
+    /* Distances */
+    .dist-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 14px;
+    }
+    .dist-pill {
+      background: #edf7ed;
+      color: #2d6a2d;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-left: auto;
+    }
+
+    /* Schedule */
+    .team-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .team-red { background: #fff0f0; color: #c0392b; }
+    .team-blue { background: #f0f4ff; color: #2c5282; }
+
+    .schedule-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 16px; }
+    .schedule-table th {
+      text-align: left;
+      padding: 8px 10px;
+      background: #f7f7f7;
+      font-size: 12px;
+      color: #718096;
+      font-weight: 600;
+    }
+    .schedule-table td { padding: 10px 10px; border-bottom: 1px solid #f3f3f3; vertical-align: middle; }
+    .schedule-table tr:last-child td { border-bottom: none; }
+    .schedule-table .our-team { font-weight: 700; color: #1a202c; }
+    .time-badge {
+      background: #f0f4f8;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    .plan-badge {
+      font-size: 11px;
+      color: #718096;
+      background: #f7f7f7;
+      padding: 2px 7px;
+      border-radius: 5px;
+    }
+
+    /* Team squads */
+    .player-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; margin-top: 8px; }
+    .chip {
+      background: #f0f4f8;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .chip.gk { background: #fff8e1; color: #b7791f; font-weight: 600; }
+
+    .preliminary-note {
+      background: #fffbeb;
+      border: 1px solid #f6e05e;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #744210;
+      margin-bottom: 16px;
+    }
+
+    /* Pack list */
+    .pack-list { list-style: none; }
+    .pack-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 14px;
+    }
+    .pack-list li:last-child { border-bottom: none; }
+    .pack-list li::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border: 2px solid #cbd5e0;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    /* Car list */
+    .car-block {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+    .car-block:last-child { margin-bottom: 0; }
+    .car-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .car-driver { font-weight: 700; font-size: 15px; }
+    .car-spaces {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .spaces-left { background: #e6fffa; color: #234e52; }
+    .car-passengers { display: flex; flex-wrap: wrap; gap: 6px; }
+    .car-passenger {
+      background: #f0f4f8;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 13px;
+    }
+    .car-passenger.driver-chip { background: #2d6a2d; color: white; font-weight: 600; }
+    .empty-seat {
+      border: 2px dashed #cbd5e0;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 13px;
+      color: #a0aec0;
+    }
+
+    .meeting-banner {
+      background: linear-gradient(135deg, #1a3a1a, #2d6a2d);
+      color: white;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .meeting-banner .icon { font-size: 24px; }
+    .meeting-banner .details { flex: 1; }
+    .meeting-banner .details strong { display: block; font-size: 15px; }
+    .meeting-banner .details span { font-size: 13px; opacity: 0.85; }
+
+    .note { font-size: 12px; color: #718096; margin-top: 6px; }
+
+    @media (max-width: 480px) {
+      .meal-grid { grid-template-columns: 1fr; }
+      .schedule-table { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="badge">⚽ Skoftebyns IF · P2014</div>
+    <h1>Giffcupen 2026</h1>
+    <p>25–26 april · Tidaholm</p>
+  </div>
+
+  <!-- Platser -->
+  <div class="card">
+    <h2>📍 Platser</h2>
+    <div class="info-row">
+      <div class="info-label">Planer</div>
+      <div class="info-value"><a href="https://maps.app.goo.gl/3Ez8hM9J45aqJWmq7" target="_blank">🗺 Idrottsparken</a></div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">Mat</div>
+      <div class="info-value"><a href="https://maps.app.goo.gl/42upm6LZfssAei7f6" target="_blank">🗺 Rosenbergsskolan 2</a></div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">Boende</div>
+      <div class="info-value"><a href="https://maps.app.goo.gl/kb4qC5WxpDVnPsEZ6" target="_blank">🗺 Stallängsskolan</a></div>
+    </div>
+    <div class="dist-row">
+      <span>Mat → Boende</span>
+      <div class="dist-pill">1,6 km · 3 min</div>
+    </div>
+    <div class="dist-row">
+      <span>Boende → Planer</span>
+      <div class="dist-pill">11 km · 13 min</div>
+    </div>
+  </div>
+
+  <!-- Spelschema -->
+  <div class="card">
+    <h2>📅 Spelschema — Lördag 25 april</h2>
+
+    <div class="team-label team-red">🔴 Lag 1 — Svart · Grupp F</div>
+    <table class="schedule-table">
+      <thead>
+        <tr><th>Tid</th><th>Plan</th><th>Hemma</th><th>Borta</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="time-badge">14:30</span></td>
+          <td><span class="plan-badge">IP1</span></td>
+          <td class="our-team">Skoftebyns IF Svart</td>
+          <td>Norrahammar GIS Vit</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">16:30</span></td>
+          <td><span class="plan-badge">IP2</span></td>
+          <td>BK-Trix Lag 1</td>
+          <td class="our-team">Skoftebyns IF Svart</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">18:30</span></td>
+          <td><span class="plan-badge">IP2</span></td>
+          <td class="our-team">Skoftebyns IF Svart</td>
+          <td>Tidaholms GIF</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="team-label team-blue">🔵 Lag 2 — Röd · Grupp H</div>
+    <table class="schedule-table">
+      <thead>
+        <tr><th>Tid</th><th>Plan</th><th>Hemma</th><th>Borta</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="time-badge">15:30</span></td>
+          <td><span class="plan-badge">IP1</span></td>
+          <td class="our-team">Skoftebyns IF Röd</td>
+          <td>Husqvarna FF Vit</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">17:30</span></td>
+          <td><span class="plan-badge">IP1</span></td>
+          <td>Habo IF P15</td>
+          <td class="our-team">Skoftebyns IF Röd</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">19:30</span></td>
+          <td><span class="plan-badge">IP1</span></td>
+          <td class="our-team">Skoftebyns IF Röd</td>
+          <td>Assyriska IK</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Lag -->
+  <div class="card">
+    <h2>👕 Lagen</h2>
+
+    <div class="preliminary-note">
+      ⚠️ Lagen är preliminära och kan komma att ändras.
+    </div>
+
+    <div class="team-label team-red" style="margin-bottom:4px;">🔴 Lag 1 — Svart</div>
+    <div class="player-chips">
+      <span class="chip gk">🧤 Filip C</span>
+      <span class="chip gk">🧤 Ralf</span>
+      <span class="chip">Mohid</span>
+      <span class="chip">Adam</span>
+      <span class="chip">Oscar</span>
+      <span class="chip">Mikail</span>
+      <span class="chip">Albin</span>
+      <span class="chip">Bashkim</span>
+      <span class="chip">Rohaan</span>
+      <span class="chip">Elias</span>
+      <span class="chip">Joel</span>
+    </div>
+
+    <hr style="border:none;border-top:1px solid #f0f0f0;margin:12px 0;">
+
+    <div class="team-label team-blue" style="margin-bottom:4px;">🔵 Lag 2 — Röd</div>
+    <div class="player-chips">
+      <span class="chip gk">🧤 Wilhelm</span>
+      <span class="chip gk">🧤 Ralf</span>
+      <span class="chip">Gabriel</span>
+      <span class="chip">Filip J</span>
+      <span class="chip">Adijan</span>
+      <span class="chip">Hassan</span>
+      <span class="chip">Kalle</span>
+      <span class="chip">William</span>
+      <span class="chip">Dario</span>
+      <span class="chip">Justin</span>
+      <span class="chip">Lo</span>
+      <span class="chip">Emir</span>
+    </div>
+    <p class="note">Ralf är roterande målvakt — spelar för det lag som behöver GK i varje match.</p>
+  </div>
+
+  <!-- Kontakter -->
+  <div class="card">
+    <h2>📞 Kontakter</h2>
+
+    <a href="https://chat.whatsapp.com/JUrFebK2iYe7TTflUec1JK?mode=gi_t" target="_blank" style="display:flex;align-items:center;gap:12px;background:#f0fff4;border:1px solid #c6f6d5;border-radius:10px;padding:14px;text-decoration:none;color:#1a202c;margin-bottom:14px;">
+      <span style="font-size:26px;">💬</span>
+      <div>
+        <div style="font-weight:700;font-size:14px;color:#276749;">SIF Föräldrargrupp</div>
+        <div style="font-size:13px;color:#4a5568;">Gå med i WhatsApp-gruppen</div>
+      </div>
+    </a>
+
+    <div class="info-row">
+      <div class="info-label">Fahri</div>
+      <div class="info-value"><a href="tel:0735628077">0735 628 077</a></div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">Felix</div>
+      <div class="info-value"><a href="tel:0739665545">0739 665 545</a></div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">Mika</div>
+      <div class="info-value"><a href="tel:0707593264">0707 593 264</a></div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">Peter</div>
+      <div class="info-value"><a href="tel:0739011670">0739 011 670</a></div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">Sanjin</div>
+      <div class="info-value"><a href="tel:0732302451">0732 302 451</a></div>
+    </div>
+  </div>
+
+  <!-- Måltider -->
+  <div class="card">
+    <h2>🍽 Måltider</h2>
+    <div class="meal-grid">
+      <div class="meal-item">
+        <div class="day">Lördag kväll</div>
+        <div class="meal-name">Middag</div>
+        <div class="meal-time">20:30</div>
+        <div class="meal-food">Köttfärsås med pasta</div>
+      </div>
+      <div class="meal-item">
+        <div class="day">Söndag morgon</div>
+        <div class="meal-name">Frukost</div>
+        <div class="meal-time">06:30</div>
+        <div class="meal-food">&nbsp;</div>
+      </div>
+      <div class="meal-item" style="grid-column: span 2;">
+        <div class="day">Söndag</div>
+        <div class="meal-name">Lunch</div>
+        <div class="meal-time">14:00</div>
+        <div class="meal-food">Korvstroganoff med ris</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transport -->
+  <div class="card">
+    <h2>🚗 Transport & Samling</h2>
+
+    <div class="meeting-banner">
+      <div class="icon">📍</div>
+      <div class="details">
+        <strong>Samling: Nysätra — Lördag 25 april kl. 10:45</strong>
+        <span>Alla bilar åker därifrån tillsammans</span>
+      </div>
+    </div>
+
+    <div class="car-block">
+      <div class="car-header">
+        <div class="car-driver">Sanjin</div>
+        <div class="car-spaces spaces-left">5 platser kvar</div>
+      </div>
+      <div class="car-passengers">
+        <span class="car-passenger driver-chip">Sanjin</span>
+        <span class="car-passenger">Filip C</span>
+        <span class="car-passenger">Wilhelm</span>
+        <span class="empty-seat">Ledig plats</span>
+        <span class="empty-seat">Ledig plats</span>
+        <span class="empty-seat">Ledig plats</span>
+        <span class="empty-seat">Ledig plats</span>
+        <span class="empty-seat">Ledig plats</span>
+      </div>
+    </div>
+
+    <div class="car-block">
+      <div class="car-header">
+        <div class="car-driver">Felix</div>
+        <div class="car-spaces spaces-left">5 platser kvar</div>
+      </div>
+      <div class="car-passengers">
+        <span class="car-passenger driver-chip">Felix</span>
+        <span class="car-passenger">Kalle</span>
+        <span class="empty-seat">Ledig plats</span>
+        <span class="empty-seat">Ledig plats</span>
+        <span class="empty-seat">Ledig plats</span>
+        <span class="empty-seat">Ledig plats</span>
+        <span class="empty-seat">Ledig plats</span>
+      </div>
+    </div>
+
+    <div class="car-block">
+      <div class="car-header">
+        <div class="car-driver">Fahri</div>
+        <div class="car-spaces spaces-left">3 platser kvar</div>
+      </div>
+      <div class="car-passengers">
+        <span class="car-passenger driver-chip">Fahri</span>
+        <span class="car-passenger">Emir</span>
+        <span class="empty-seat">Ledig plats</span>
+        <span class="empty-seat">Ledig plats</span>
+        <span class="empty-seat">Ledig plats</span>
+      </div>
+    </div>
+
+    <div class="car-block">
+      <div class="car-header">
+        <div class="car-driver">Mika</div>
+        <div class="car-spaces spaces-left">3 platser kvar</div>
+      </div>
+      <div class="car-passengers">
+        <span class="car-passenger driver-chip">Mika</span>
+        <span class="car-passenger">Oscar</span>
+        <span class="empty-seat">Ledig plats</span>
+        <span class="empty-seat">Ledig plats</span>
+        <span class="empty-seat">Ledig plats</span>
+      </div>
+    </div>
+
+    <div class="car-block">
+      <div class="car-header">
+        <div class="car-driver">Peter</div>
+        <div class="car-spaces spaces-left">3 platser kvar</div>
+      </div>
+      <div class="car-passengers">
+        <span class="car-passenger driver-chip">Peter</span>
+        <span class="car-passenger">Lo</span>
+        <span class="empty-seat">Ledig plats</span>
+        <span class="empty-seat">Ledig plats</span>
+        <span class="empty-seat">Ledig plats</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Packlista -->
+  <div class="card">
+    <h2>🎒 Packlista</h2>
+    <ul class="pack-list">
+      <li>Madrass (max 90 cm bred)</li>
+      <li>Sovkläder</li>
+      <li>Duschgrejer</li>
+      <li>Tandborste och tandkräm</li>
+    </ul>
+  </div>
+
+  <p style="text-align:center;font-size:12px;color:#a0aec0;padding:10px 0 20px;">Skoftebyns IF P2014 · Giffcupen 2026</p>
+
+</div>
+</body>
+</html>
