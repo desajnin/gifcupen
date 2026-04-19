@@ -120,8 +120,8 @@
       border-radius: 8px;
       margin-bottom: 10px;
     }
+    .team-black { background: #2a2a2a; color: #ffffff; }
     .team-red { background: #fff0f0; color: #c0392b; }
-    .team-blue { background: #f0f4ff; color: #2c5282; }
 
     .schedule-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 16px; }
     .schedule-table th {
@@ -293,10 +293,10 @@
   <div class="card">
     <h2>📅 Spelschema — Lördag 25 april</h2>
 
-    <div class="team-label team-red">🔴 Lag 1 — Svart · Grupp F</div>
+    <div class="team-label team-black">⬛ Lag 1 — Svart · Grupp F</div>
     <table class="schedule-table">
       <thead>
-        <tr><th>Tid</th><th>Plan</th><th>Hemma</th><th>Borta</th></tr>
+        <tr><th>Tid</th><th>Plan</th><th>Hemma</th><th>Borta</th><th>MV</th></tr>
       </thead>
       <tbody>
         <tr>
@@ -304,26 +304,29 @@
           <td><span class="plan-badge">IP1</span></td>
           <td class="our-team">Skoftebyns IF Svart</td>
           <td>Norrahammar GIS Vit</td>
+          <td style="font-size:13px;color:#718096;">Filip C</td>
         </tr>
         <tr>
           <td><span class="time-badge">16:30</span></td>
           <td><span class="plan-badge">IP2</span></td>
           <td>BK-Trix Lag 1</td>
           <td class="our-team">Skoftebyns IF Svart</td>
+          <td style="font-size:13px;color:#718096;">Filip C</td>
         </tr>
         <tr>
           <td><span class="time-badge">18:30</span></td>
           <td><span class="plan-badge">IP2</span></td>
           <td class="our-team">Skoftebyns IF Svart</td>
           <td>Tidaholms GIF</td>
+          <td style="font-size:13px;color:#718096;">Ralf</td>
         </tr>
       </tbody>
     </table>
 
-    <div class="team-label team-blue">🔵 Lag 2 — Röd · Grupp H</div>
+    <div class="team-label team-red">🔴 Lag 2 — Röd · Grupp H</div>
     <table class="schedule-table">
       <thead>
-        <tr><th>Tid</th><th>Plan</th><th>Hemma</th><th>Borta</th></tr>
+        <tr><th>Tid</th><th>Plan</th><th>Hemma</th><th>Borta</th><th>MV</th></tr>
       </thead>
       <tbody>
         <tr>
@@ -331,18 +334,21 @@
           <td><span class="plan-badge">IP1</span></td>
           <td class="our-team">Skoftebyns IF Röd</td>
           <td>Husqvarna FF Vit</td>
+          <td style="font-size:13px;color:#718096;">Wilhelm</td>
         </tr>
         <tr>
           <td><span class="time-badge">17:30</span></td>
           <td><span class="plan-badge">IP1</span></td>
           <td>Habo IF P15</td>
           <td class="our-team">Skoftebyns IF Röd</td>
+          <td style="font-size:13px;color:#718096;">Ralf</td>
         </tr>
         <tr>
           <td><span class="time-badge">19:30</span></td>
           <td><span class="plan-badge">IP1</span></td>
           <td class="our-team">Skoftebyns IF Röd</td>
           <td>Assyriska IK</td>
+          <td style="font-size:13px;color:#718096;">Wilhelm</td>
         </tr>
       </tbody>
     </table>
@@ -356,7 +362,7 @@
       ⚠️ Lagen är preliminära och kan komma att ändras.
     </div>
 
-    <div class="team-label team-red" style="margin-bottom:4px;">🔴 Lag 1 — Svart</div>
+    <div class="team-label team-black" style="margin-bottom:4px;">⬛ Lag 1 — Svart</div>
     <div class="player-chips">
       <span class="chip gk">🧤 Filip C</span>
       <span class="chip gk">🧤 Ralf</span>
@@ -373,7 +379,7 @@
 
     <hr style="border:none;border-top:1px solid #f0f0f0;margin:12px 0;">
 
-    <div class="team-label team-blue" style="margin-bottom:4px;">🔵 Lag 2 — Röd</div>
+    <div class="team-label team-red" style="margin-bottom:4px;">🔴 Lag 2 — Röd</div>
     <div class="player-chips">
       <span class="chip gk">🧤 Wilhelm</span>
       <span class="chip gk">🧤 Ralf</span>
@@ -439,7 +445,7 @@
         <div class="day">Söndag morgon</div>
         <div class="meal-name">Frukost</div>
         <div class="meal-time">06:30</div>
-        <div class="meal-food">&nbsp;</div>
+        <div class="meal-food">—</div>
       </div>
       <div class="meal-item" style="grid-column: span 2;">
         <div class="day">Söndag</div>
@@ -448,6 +454,7 @@
         <div class="meal-food">Korvstroganoff med ris</div>
       </div>
     </div>
+    <p class="note" style="margin-top:10px;">Vissa spelare kommer att få mat utan fläsk och vissa vegetariskt.</p>
   </div>
 
   <!-- Transport -->
@@ -542,13 +549,19 @@
   <div class="card">
     <h2>🎒 Packlista</h2>
     <ul class="pack-list">
-      <li>Matchkkläder (Tröja + Shorts + Strumpor)</li>
+      <li>Matchkläder (Tröja + Shorts + Strumpor)</li>
       <li>Benskydd</li>
+      <li>Fotbollsskor</li>
       <li>Madrass (max 90 cm bred)</li>
       <li>Sängkläder + Kudde</li>
       <li>Sovkläder</li>
       <li>Duschgrejer</li>
+      <li>Handduk</li>
       <li>Tandborste och tandkräm</li>
+      <li>Mellanmål</li>
+      <li>Vattenflaska</li>
+      <li>Ombyteskläder</li>
+      <li>Telefon + laddare (Lämnas in)</li>
     </ul>
   </div>
 
